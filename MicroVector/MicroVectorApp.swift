@@ -32,3 +32,4 @@ public extension HubOMatic {
         self
     }
 }
+
