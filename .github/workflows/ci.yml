@@ -9,16 +9,6 @@ on:
     - cron:  '0 6,18 * * *'
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
-    steps:
-    - uses: actions/checkout@v2
-    - id: foo
-      uses: actions/hello-world-composite-run-steps-action@v1
-      with:
-        who-to-greet: 'Mona the Octocat'
-        
   Build:
     env:
       APP_NAME: MicroVector
