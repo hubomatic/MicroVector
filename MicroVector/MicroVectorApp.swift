@@ -7,7 +7,6 @@
 
 import SwiftUI
 import MiscKit
-// import HubOMatic // TODO: re-import
 
 @main
 struct MicroVectorApp: App {
@@ -26,22 +25,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         HubOMatic.start(update: URL(string: "https://github.com/hubomatic/MicroVector/releases/latest/download/RELEASE_NOTES.md")!, artifact: "MicroVector.zip", title: loc("A new version of MicroVector is available!"))
     }
 }
-
-public extension HubOMatic {
-    @discardableResult static func start(update: URL, artifact: String, title: String = loc("An update is available for installation"), updateTitle: String = loc("Update"), cancelTitle: String = loc("Cancel")) -> Self {
-        HubOMatic()
-    }
-}
-
-public struct HubOMatic {
-    struct Config : Hashable, Codable {
-        var repository: URL
-    }
-
-    var text = "Hello, World!"
-
-    public init() {
-
-    }
-}
-

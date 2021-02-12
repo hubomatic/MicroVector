@@ -17,6 +17,7 @@
 		49D2614725D6F4EE0053615A /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 49D2614625D6F4EE0053615A /* HubOMatic */; };
 		49D2614C25D6F5550053615A /* NSImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2614B25D6F5550053615A /* NSImage+SVG.swift */; };
 		49D2615825D6F97D0053615A /* MemoZ in Frameworks */ = {isa = PBXBuildFile; productRef = 49D2615725D6F97D0053615A /* MemoZ */; };
+		49D2618425D70FB00053615A /* HubOMatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2618325D70FB00053615A /* HubOMatic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		49C2150D25D6CB830030F8B2 /* MicroVectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorUITests.swift; sourceTree = "<group>"; };
 		49C2150F25D6CB830030F8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D2614B25D6F5550053615A /* NSImage+SVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+SVG.swift"; sourceTree = "<group>"; };
+		49D2618325D70FB00053615A /* HubOMatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubOMatic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		49C214E125D6CB800030F8B2 = {
 			isa = PBXGroup;
 			children = (
+				49D2618325D70FB00053615A /* HubOMatic.swift */,
 				49C214EC25D6CB800030F8B2 /* MicroVector */,
 				49C2150125D6CB830030F8B2 /* MicroVectorTests */,
 				49C2150C25D6CB830030F8B2 /* MicroVectorUITests */,
@@ -283,6 +286,7 @@
 				49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */,
 				49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */,
 				49D2614C25D6F5550053615A /* NSImage+SVG.swift in Sources */,
+				49D2618425D70FB00053615A /* HubOMatic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,9 +443,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MicroVector/MicroVector.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MicroVector/Preview Content\"";
+				DEVELOPMENT_TEAM = 2HFBY6N8ZN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MicroVector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -461,9 +467,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MicroVector/MicroVector.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MicroVector/Preview Content\"";
+				DEVELOPMENT_TEAM = 2HFBY6N8ZN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MicroVector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
