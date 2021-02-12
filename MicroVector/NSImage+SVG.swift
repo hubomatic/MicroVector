@@ -55,4 +55,3 @@ private extension NSObjectProtocol {
         return instance?.takeUnretainedValue() as? Self
     }
 }
-
