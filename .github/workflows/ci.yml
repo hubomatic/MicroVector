@@ -29,6 +29,6 @@ jobs:
       #  run: xcodebuild test -scheme ${{ env.APP_NAME }}
 
       - id: foo
-        uses: hubomatic/hubomat@v3
+        uses: hubomatic/hubomat@v4
         with:
           who-to-greet: 'Yoyo the Octycat'
