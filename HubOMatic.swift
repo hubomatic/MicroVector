@@ -12,15 +12,16 @@ import SwiftUI
 // import HubOMatic // TODO: re-import
 
 public struct HubOMatic {
+    static let shared = Self()
+
     struct Config : Hashable, Codable {
         var repository: URL
     }
 
-    var text = "Hello, World!"
-
-    public init() {
+    private init() {
     }
 }
+
 
 public extension HubOMatic {
     @discardableResult static func start(update: URL, artifact: String, title: String = loc("An update is available for installation"), updateTitle: String = loc("Update"), cancelTitle: String = loc("Cancel")) -> Self {
