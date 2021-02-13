@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MiscKit
+import MemoZ
 
 @main
 struct MicroVectorApp: App {
@@ -23,5 +24,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         dbg(notification)
         HubOMatic.start(update: URL(string: "https://github.com/hubomatic/MicroVector/releases/latest/download/RELEASE_NOTES.md")!, artifact: "MicroVector.zip", title: loc("A new version of MicroVector is available!"))
+    }
+
+    func applicationDidResignActive(_ notification: Notification) {
+        MemoizationCache.shared.clear()
     }
 }

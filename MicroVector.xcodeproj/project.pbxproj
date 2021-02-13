@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495DE45E25D77C0B005CA904 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE45D25D77C0A005CA904 /* README.md */; };
+		495DE46325D77C12005CA904 /* RELEASE_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE46225D77C12005CA904 /* RELEASE_NOTES.md */; };
 		49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */; };
 		49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214EF25D6CB800030F8B2 /* MicroVectorDocument.swift */; };
 		49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214F125D6CB800030F8B2 /* ContentView.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		495DE45D25D77C0A005CA904 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		495DE46225D77C12005CA904 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
 		49C214EA25D6CB800030F8B2 /* MicroVector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroVector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorApp.swift; sourceTree = "<group>"; };
 		49C214EF25D6CB800030F8B2 /* MicroVectorDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorDocument.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		49C214E125D6CB800030F8B2 = {
 			isa = PBXGroup;
 			children = (
+				495DE45D25D77C0A005CA904 /* README.md */,
+				495DE46225D77C12005CA904 /* RELEASE_NOTES.md */,
 				49D2618325D70FB00053615A /* HubOMatic.swift */,
 				49C214EC25D6CB800030F8B2 /* MicroVector */,
 				49C2150125D6CB830030F8B2 /* MicroVectorTests */,
@@ -256,6 +262,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495DE46325D77C12005CA904 /* RELEASE_NOTES.md in Resources */,
+				495DE45E25D77C0B005CA904 /* README.md in Resources */,
 				49C214F725D6CB830030F8B2 /* Preview Assets.xcassets in Resources */,
 				49C214F425D6CB830030F8B2 /* Assets.xcassets in Resources */,
 			);
