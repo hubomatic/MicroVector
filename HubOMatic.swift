@@ -25,7 +25,8 @@ public struct HubOMatic {
 
 public extension HubOMatic {
     @discardableResult static func start(update: URL, artifact: String, title: String = loc("An update is available for installation"), updateTitle: String = loc("Update"), cancelTitle: String = loc("Cancel")) -> Self {
-        HubOMatic()
+        dbg("HubOMatic starting with update URL:", update, "for artifact:" , artifact)
+        return HubOMatic()
     }
 }
 
