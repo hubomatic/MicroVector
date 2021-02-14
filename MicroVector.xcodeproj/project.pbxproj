@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4916C19F25D998DB001BC1B5 /* MiscKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4916C19E25D998DB001BC1B5 /* MiscKit */; };
-		4916C1A025D998DB001BC1B5 /* MiscKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 4916C19E25D998DB001BC1B5 /* MiscKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		490B596D25D99AA100E6F90D /* MemoZ in Frameworks */ = {isa = PBXBuildFile; productRef = 490B596C25D99AA100E6F90D /* MemoZ */; };
+		490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; };
+		490B597B25D99B0A00E6F90D /* HubOMatic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		490B597F25D99B1100E6F90D /* MiscKit in Frameworks */ = {isa = PBXBuildFile; productRef = 490B597E25D99B1100E6F90D /* MiscKit */; };
+		490B598025D99B1100E6F90D /* MiscKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 490B597E25D99B1100E6F90D /* MiscKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		495DE45E25D77C0B005CA904 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE45D25D77C0A005CA904 /* README.md */; };
 		495DE46325D77C12005CA904 /* RELEASE_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE46225D77C12005CA904 /* RELEASE_NOTES.md */; };
 		49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */; };
@@ -18,11 +21,8 @@
 		49C214F725D6CB830030F8B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49C214F625D6CB830030F8B2 /* Preview Assets.xcassets */; };
 		49C2150325D6CB830030F8B2 /* MicroVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2150225D6CB830030F8B2 /* MicroVectorTests.swift */; };
 		49C2150E25D6CB830030F8B2 /* MicroVectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2150D25D6CB830030F8B2 /* MicroVectorUITests.swift */; };
-		49D2614725D6F4EE0053615A /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 49D2614625D6F4EE0053615A /* HubOMatic */; };
 		49D2614C25D6F5550053615A /* NSImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2614B25D6F5550053615A /* NSImage+SVG.swift */; };
-		49D2615825D6F97D0053615A /* MemoZ in Frameworks */ = {isa = PBXBuildFile; productRef = 49D2615725D6F97D0053615A /* MemoZ */; };
 		49D2618425D70FB00053615A /* HubOMatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2618325D70FB00053615A /* HubOMatic.swift */; };
-		49EB90C025D99913007DE8E4 /* HubOMatic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 49D2614625D6F4EE0053615A /* HubOMatic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +49,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4916C1A025D998DB001BC1B5 /* MiscKit in Embed Frameworks */,
-				49EB90C025D99913007DE8E4 /* HubOMatic in Embed Frameworks */,
+				490B597B25D99B0A00E6F90D /* HubOMatic in Embed Frameworks */,
+				490B598025D99B1100E6F90D /* MiscKit in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,9 +83,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4916C19F25D998DB001BC1B5 /* MiscKit in Frameworks */,
-				49D2614725D6F4EE0053615A /* HubOMatic in Frameworks */,
-				49D2615825D6F97D0053615A /* MemoZ in Frameworks */,
+				490B597F25D99B1100E6F90D /* MiscKit in Frameworks */,
+				490B596D25D99AA100E6F90D /* MemoZ in Frameworks */,
+				490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +106,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490B596B25D99AA100E6F90D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49C214E125D6CB800030F8B2 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +123,7 @@
 				49C2150125D6CB830030F8B2 /* MicroVectorTests */,
 				49C2150C25D6CB830030F8B2 /* MicroVectorUITests */,
 				49C214EB25D6CB800030F8B2 /* Products */,
+				490B596B25D99AA100E6F90D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,9 +196,9 @@
 			);
 			name = MicroVector;
 			packageProductDependencies = (
-				49D2614625D6F4EE0053615A /* HubOMatic */,
-				49D2615725D6F97D0053615A /* MemoZ */,
-				4916C19E25D998DB001BC1B5 /* MiscKit */,
+				490B596C25D99AA100E6F90D /* MemoZ */,
+				490B597925D99B0A00E6F90D /* HubOMatic */,
+				490B597E25D99B1100E6F90D /* MiscKit */,
 			);
 			productName = MicroVector;
 			productReference = 49C214EA25D6CB800030F8B2 /* MicroVector.app */;
@@ -474,7 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MicroVector/MicroVector.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MicroVector/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -500,7 +508,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MicroVector/MicroVector.entitlements;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MicroVector/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -668,20 +676,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4916C19E25D998DB001BC1B5 /* MiscKit */ = {
+		490B596C25D99AA100E6F90D /* MemoZ */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4916C19D25D998DB001BC1B5 /* XCRemoteSwiftPackageReference "MiscKit" */;
-			productName = MiscKit;
+			package = 49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */;
+			productName = MemoZ;
 		};
-		49D2614625D6F4EE0053615A /* HubOMatic */ = {
+		490B597925D99B0A00E6F90D /* HubOMatic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */;
 			productName = HubOMatic;
 		};
-		49D2615725D6F97D0053615A /* MemoZ */ = {
+		490B597E25D99B1100E6F90D /* MiscKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */;
-			productName = MemoZ;
+			package = 4916C19D25D998DB001BC1B5 /* XCRemoteSwiftPackageReference "MiscKit" */;
+			productName = MiscKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
