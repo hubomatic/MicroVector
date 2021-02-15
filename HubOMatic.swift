@@ -14,6 +14,7 @@ import SwiftUI
 public final class HubOMatic : ObservableObject {
     private var subscribers = Set<AnyCancellable>()
 
+    @Published var state: UpdateStatus = .idle
     @Published var enabled: Bool = true
     @Published var showingUpdateScene: Bool = false
 
@@ -72,11 +73,8 @@ public final class HubOMatic : ObservableObject {
     }
 }
 
-@available(*, deprecated)
-typealias ReleaseVersion = Data
-
 /// The various states for checking for an update
-enum UpdateStatus : Equatable {
+enum UpdateStatus {
     /// The user has not initiated an update check
     case idle
     /// The user cancelled the update check
@@ -84,30 +82,38 @@ enum UpdateStatus : Equatable {
     /// Currently checking for an update
     case checking
     /// An error state
-    case checkError(NSError)
+    case checkError(Error)
     /// No update is available
     case noUpdateAvailable
     /// An update is available
-    case updateAvailable(ReleaseVersion)
+    case updateAvailable(Data)
     /// An update is currently being downloaded
-    case downloading(ReleaseVersion, Progress)
+    case downloading(Progress)
     /// An error state
-    case downloadError(NSError)
+    case downloadError(Error)
     /// The update is being extracted
-    case extracting(ReleaseVersion, URL, Progress)
+    case extracting(URL)
     /// An error state
-    case extractError(NSError)
+    case extractError(Error)
     /// The update had been downloaded and extracted, and can now be installed
-    case extractComplete(ReleaseVersion, URL)
+    case extractComplete(URL)
     /// The app is currently being installed
-    case installing(ReleaseVersion, URL, Progress)
+    case installing(URL)
     /// An error state
-    case installError(NSError)
+    case installError(Error)
     /// The app has been successfully installed and is awaiting relaunch
-    case awaitingRelaunch(ReleaseVersion)
+    case awaitingRelaunch
 }
 
+
 public extension HubOMatic {
+    /// The URL for downloading the artifact
+    var artifactURL: URL {
+        config.versionInfo
+            .deletingLastPathComponent()
+            .appendingPathComponent(config.relativeArtifact)
+    }
+
     @discardableResult static func create(_ config: Config) -> Self {
         dbg("HubOMatic starting with config:", config)
         return Self(config: config)
@@ -116,17 +122,63 @@ public extension HubOMatic {
     /// Initiates an update check
     func checkForUpdateAction() {
         dbg()
-        URLSession.shared.dataTaskPublisher(for: config.versionInfo)
-            .sink(receiveCompletion: downloadTaskReceivedCompletion, receiveValue: downloadTaskReceivedValue)
-            .store(in: &subscribers)
+        let task = URLSession.shared.dataTask(with: config.versionInfo, completionHandler: updateDataReceived)
+
+        task.resume()
     }
 
-    func downloadTaskReceivedCompletion(completion: Subscribers.Completion<URLError>) {
-        dbg(completion)
+    func skipThisVersionAction() {
+        dbg(wip("TODO"))
     }
 
-    func downloadTaskReceivedValue(data: Data, response: URLResponse) {
-        dbg(data, response)
+    func remindMeLaterAction() {
+        dbg(wip("TODO"))
+    }
+
+    func downloadUpdateAction() {
+        dbg()
+        let task = URLSession.shared.downloadTask(with: artifactURL, completionHandler: artifactFileDownloaded)
+        task.resume()
+        self.state = UpdateStatus.downloading(task.progress)
+    }
+
+    func artifactFileDownloaded(localFile: URL?, response: URLResponse?, error: Error?) {
+        dbg(localFile, response, error)
+
+        let appDir = Self.preferredInstallDirectory()
+
+        if let localFile = localFile {
+            do {
+                try localFile.installZip(to: appDir, privileged: true)
+            } catch {
+                dbg("unprivileged fail:", error)
+                do {
+                    try localFile.installZip(to: appDir, privileged: true)
+                } catch {
+                    dbg("privileged fail:", error)
+                }
+            }
+        }
+
+        // Process.shell(script: <#T##String#>, terminal: <#T##Bool#>, privileged: <#T##Bool#>)
+
+//        if let error = error {
+//            self.state = .downloadError(error as NSError)
+//        } else if let localFile = localFile {
+//            self.state = .extracting(localFile)
+//        }
+
+//        { tmpFile, response, error in
+//            dbg("downloaded to", tmpFile, "with response", response, error)
+//            XXX
+//        }
+    }
+
+    func updateDataReceived(data: Data?, response: URLResponse?, error: Error?) {
+        dbg(data, response, error)
+        // note thaqt the URL of the response will be something like:
+        // https://github-releases.githubusercontent.com/338369772/5be29500-6f43-11eb-88ba-fc1b235b614f?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210215%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210215T174405Z&X-Amz-Expires=300&X-Amz-Signature=54e44651d92c261064798d7c4a9ceecf80874a39e5ca009f4103dc4565c2b754&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=338369772&response-content-disposition=attachment%3B%20filename%3DRELEASE_NOTES.md&response-content-type=application%2Foctet-stream
+
         if let versionInfoLocal = config.versionInfoLocal {
             do {
                 let localData = try Data(contentsOf: versionInfoLocal)
@@ -174,7 +226,7 @@ public extension HubOMatic {
             // TODO: it would be better to check to see if the filesystem itself is read-only rather than checking for the presence of a "AppTranslocation" string in the path that could change in the future
             // We also relocate a live build in "DerivedData" so we can test the install workflow
             if appTarget.path.contains("AppTranslocation") || appTarget.path.contains("DerivedData") {
-                appTarget = Self.preferredInstallDirectory()?.appendingPathComponent(appTarget.lastPathComponent) ?? appTarget
+                appTarget = Self.preferredInstallDirectory().appendingPathComponent(appTarget.lastPathComponent)
             }
 
             dbg("appTarget2", appTarget)
@@ -186,13 +238,13 @@ public extension HubOMatic {
         }
     }
 
-    static func preferredInstallDirectory() -> URL? {
+    static func preferredInstallDirectory() -> URL {
         let fm = FileManager.default
-        let dirs = fm.urls(for: .applicationDirectory, in: .allDomainsMask)
+        let dirs = fm.urls(for: .applicationDirectory, in: .localDomainMask)
         // Find Applications dir with the most apps that isn't system protected
         return dirs.map({ $0.resolvingSymlinksInPath() }).filter({ url in
             url.isDirectory == true && url.path != "/System/Applications" // exclude read-only apps dir
-        }).first
+        }).first ?? URL(fileURLWithPath: "/Applications")
     }
 
     /// Takes the given app URL and installs it into the current bundle's location and then re-launches the new app.
@@ -357,8 +409,9 @@ public extension HubOMatic {
             return dbg("no need to relocateExecutable: bundle is writable at", bundleUrl.path)
         }
 
-        guard !Bundle.main.isInstalled,
-              let applications = preferredInstallDirectory() else { return }
+        guard !Bundle.main.isInstalled else { return }
+        let applications = preferredInstallDirectory()
+
         let bundleName = bundleUrl.lastPathComponent
         let destinationUrl = applications.appendingPathComponent(bundleName)
         let needDestAuth = fm.fileExists(atPath: destinationUrl.path) && !fm.isWritableFile(atPath: destinationUrl.path)
@@ -678,6 +731,25 @@ public extension URL {
         return result?.stringValue
     }
 
+    /// Attempts to install the unpack the given local zip into the /Applications/ folder by running `ditto` on it.
+    @discardableResult func installZip(to applicationsURL: URL, quarantine: Bool = false, privileged: Bool) throws -> String? {
+        let cmds = [
+            "/usr/bin/ditto",
+            "-xk",
+            quarantine ? "--qtn" : "--noqtn",
+            "'" + self.path + "'",
+            "'" + applicationsURL.path + "'",
+        ]
+
+        let cmd = cmds.joined(separator: " ")
+        dbg("issuing command:", cmd)
+
+        let result = try Process.shell(script: cmd, privileged: privileged)
+
+        dbg("result of command", cmd, ": ", result?.stringValue, result)
+        return result?.stringValue
+    }
+
 }
 
 public extension HubOMatic {
@@ -725,7 +797,7 @@ public extension Scene {
                     .padding()
                 Form {
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(loc("A New Version of this App is Available!"))
+                        Text(locfmt("A New Version of %@ is Available!", Bundle.main.localizedName))
                             .font(Font.headline).bold()
                             .lineLimit(1)
                         Text(loc("This app has a new version available. Would you like to download it now?"))
@@ -753,13 +825,20 @@ public extension Scene {
                         // progressBar()
 
                         HStack {
-                            Button(loc("Skip This Version"), action: skipThisVersionAction)
+                            Button(loc("Skip This Version"), action: hub.skipThisVersionAction)
+
                             Spacer()
-                            Button(loc("Remind Me Later"), action: remindMeLaterAction)
+
+                            Button(loc("Remind Me Later"), action: hub.remindMeLaterAction)
                                 .keyboardShortcut(.cancelAction)
-                            Button(loc("Install Update"), action: installUpdateAction)
-                                .disabled(hub.latestReleaseData == nil)
-                                .keyboardShortcut(.defaultAction)
+
+                            if hub.latestReleaseData == nil {
+                                Button(loc("Check For Update"), action: hub.checkForUpdateAction)
+                            } else {
+                                Button(loc("Download Update"), action: hub.downloadUpdateAction)
+                                    .disabled(hub.latestReleaseData == nil)
+                                    .keyboardShortcut(.defaultAction)
+                            }
                         }
                     }
                 }
@@ -772,19 +851,6 @@ public extension Scene {
 
     func progressBar(value: Double? = 0, title: String? = nil, subtitle: String? = nil) -> some View {
         ProgressView(value: value, total: 1.0, label: { title.flatMap(Text.init) }, currentValueLabel: { subtitle.flatMap(Text.init) })
-    }
-
-
-    func skipThisVersionAction() {
-        dbg(wip("TODO"))
-    }
-
-    func remindMeLaterAction() {
-        dbg(wip("TODO"))
-    }
-
-    func installUpdateAction() {
-        dbg(wip("TODO"))
     }
 }
 
