@@ -7,26 +7,24 @@
 
 import SwiftUI
 import MiscKit
-import MemoZ
+import HubOMatic
 
 @main
 struct MicroVectorApp: App {
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject var hub = HubOMatic.create(.github(org: "hubomatic", repo: "MicroVector"))
+    @AppStorage("autoupdate") var autoupdate = true
 
-    var body: some Scene {
+    @SceneBuilder var body: some Scene {
         DocumentGroup(newDocument: MicroVectorDocument()) { file in
             ContentView(document: file.$document)
+                .toolbar {
+                    hub.toolbarButton()
+                }
         }
-    }
-}
+        .withHubOMatic(hub.enabled(autoupdate))
 
-class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationWillFinishLaunching(_ notification: Notification) {
-        dbg(notification)
-        HubOMatic.start(local: Bundle.main.url(forResource: "RELEASE_NOTES.md", withExtension: nil)!, remote: URL(string: "https://github.com/hubomatic/MicroVector/releases/latest/download/RELEASE_NOTES.md")!, artifact: "MicroVector.zip", title: loc("A new version of MicroVector is available!"))
-    }
-
-    func applicationDidResignActive(_ notification: Notification) {
-        MemoizationCache.shared.clear()
+        Settings {
+            hub.settingsView(autoupdate: $autoupdate)
+        }
     }
 }
