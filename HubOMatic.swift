@@ -708,14 +708,13 @@ public extension HubOMatic {
 public extension Scene {
     func withHubOMatic(_ hub: HubOMatic) -> some Scene {
         Group {
-            hub.showingUpdateScene ? HubOMaticUpdateScene(hub: hub) : nil
-
+            HubOMaticUpdatePanel(hub: hub)
             self.commands { HubOMaticUpdateCommands(hub: hub) }
         }
 
     }
 
-    func HubOMaticUpdateScene(hub: HubOMatic) -> some Scene {
+    func HubOMaticUpdatePanel(hub: HubOMatic) -> some Scene {
         WindowGroup(loc("Software Update"), id: "HubOMatic Update Window") {
             HStack(alignment: .top) {
                 Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
@@ -743,7 +742,7 @@ public extension Scene {
                             .cornerRadius(10)
                             .border(Color.secondary, width: 1.5)
                             .shadow(radius: 2)
-                            .font(Font.body)
+                            .font(Font.body.monospacedDigit())
 
                         Toggle(loc("Automatically download and install updates in the future"), isOn: .constant(true))
                             .font(Font.subheadline)
