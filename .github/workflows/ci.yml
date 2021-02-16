@@ -48,8 +48,9 @@ jobs:
       - name: "Export Archive"
         run: |
           mkdir -p Export/
+          xcodebuild archive -exportPath Export/ -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
           echo '<plist version="1.0"><dict><key>method</key><string>developer-id</string><key>teamID</key><string>${{ secrets.TEAM_ID }}</string></dict></plist>' > "Export/${{ env.APP_NAME }}ExportOptions.plist"
-          xcodebuild archive -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
+          xcodebuild -exportArchive -exportPath Export/ -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
 
       #- name: "Export & Sign Release Build"
       #  run: 
