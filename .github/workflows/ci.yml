@@ -100,7 +100,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           RELEASE_TAG=`git tag --sort=taggerdate | tail -n 1`
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.vars.outputs.tag }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:shortVersionString="${{ steps.vars.outputs.tag }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
         
       - name: Release
         uses: softprops/action-gh-release@v1
