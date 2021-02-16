@@ -12,7 +12,6 @@ import HubOMatic
 @main
 struct MicroVectorApp: App {
     @StateObject var hub = HubOMatic.create(.github(org: "hubomatic", repo: "MicroVector"))
-    @AppStorage("autoupdate") var autoupdate = true
 
     @SceneBuilder var body: some Scene {
         DocumentGroup(newDocument: MicroVectorDocument()) { file in
@@ -21,10 +20,10 @@ struct MicroVectorApp: App {
                     hub.toolbarButton()
                 }
         }
-        .withHubOMatic(hub.enabled(autoupdate))
+        .withHubOMatic(hub)
 
-        Settings {
-            hub.settingsView(autoupdate: $autoupdate)
-        }
+//        Settings {
+//            hub.settingsView(autoupdate: $autoupdate)
+//        }
     }
 }

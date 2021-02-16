@@ -14,6 +14,7 @@
 		490B598025D99B1100E6F90D /* MiscKit in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 490B597E25D99B1100E6F90D /* MiscKit */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		495DE45E25D77C0B005CA904 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE45D25D77C0A005CA904 /* README.md */; };
 		495DE46325D77C12005CA904 /* RELEASE_NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE46225D77C12005CA904 /* RELEASE_NOTES.md */; };
+		498872E425DC1F0E00430ABD /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 498872E325DC1F0E00430ABD /* Sparkle */; };
 		49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */; };
 		49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214EF25D6CB800030F8B2 /* MicroVectorDocument.swift */; };
 		49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214F125D6CB800030F8B2 /* ContentView.swift */; };
@@ -84,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490B597F25D99B1100E6F90D /* MiscKit in Frameworks */,
+				498872E425DC1F0E00430ABD /* Sparkle in Frameworks */,
 				490B596D25D99AA100E6F90D /* MemoZ in Frameworks */,
 				490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */,
 			);
@@ -199,6 +201,7 @@
 				490B596C25D99AA100E6F90D /* MemoZ */,
 				490B597925D99B0A00E6F90D /* HubOMatic */,
 				490B597E25D99B1100E6F90D /* MiscKit */,
+				498872E325DC1F0E00430ABD /* Sparkle */,
 			);
 			productName = MicroVector;
 			productReference = 49C214EA25D6CB800030F8B2 /* MicroVector.app */;
@@ -275,6 +278,7 @@
 				49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */,
 				49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */,
 				4916C19D25D998DB001BC1B5 /* XCRemoteSwiftPackageReference "MiscKit" */,
+				498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 49C214EB25D6CB800030F8B2 /* Products */;
 			projectDirPath = "";
@@ -657,6 +661,14 @@
 				kind = branch;
 			};
 		};
+		498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				branch = "1.25.0-rc2";
+				kind = branch;
+			};
+		};
 		49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hubomatic/HubOMatic";
@@ -690,6 +702,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4916C19D25D998DB001BC1B5 /* XCRemoteSwiftPackageReference "MiscKit" */;
 			productName = MiscKit;
+		};
+		498872E325DC1F0E00430ABD /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
