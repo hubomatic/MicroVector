@@ -50,7 +50,7 @@ jobs:
           mkdir -p Export/
           echo '<plist version="1.0"><dict><key>method</key><string>developer-id</string><key>teamID</key><string>${{ secrets.TEAM_ID }}</string></dict></plist>' > "Export/${{ env.APP_NAME }}ExportOptions.plist"
 
-      - name: "Bild Archive"
+      - name: "Build Archive"
         run:
           xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
           
