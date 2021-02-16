@@ -14,6 +14,7 @@ jobs:
       APP_NAME: MicroVector
       TEST_NAME: MicroVector
       ORG_NAME: hubomatic
+      GITHUB_RUN_ID: ${{ github.run_id }}
     runs-on: macos-latest
     environment: Signing
     timeout-minutes: 120
@@ -99,9 +100,9 @@ jobs:
       - name: Generate appcast.xml
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          RELEASE_TAG=`git tag --sort=taggerdate | tail -n 1`
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ env.GITHUB_RUN_NUMBER }}" sparkle:shortVersionString="${{ steps.vars.outputs.tag }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
-        
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ env.GITHUB_RUN_ID }}" sparkle:shortVersionString="${{ steps.vars.outputs.tag }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
+          cat Export/appcast.xml
+          
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
