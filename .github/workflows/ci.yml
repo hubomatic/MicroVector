@@ -52,7 +52,7 @@ jobs:
 
       - name: "Bild Archive"
         run:
-          xcodebuild archive -scheme "${{ env.APP_NAME }}" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
+          xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
           
       - name: "Export Archive"
         run:
