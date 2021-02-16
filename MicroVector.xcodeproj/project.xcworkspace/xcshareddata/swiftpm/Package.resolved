@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HubOMatic",
+        "repositoryURL": "https://github.com/hubomatic/HubOMatic",
+        "state": {
+          "branch": "main",
+          "revision": "35b18d3bcf8168094c7b114bf3419863e9a0a149",
+          "version": null
+        }
+      },
+      {
+        "package": "MemoZ",
+        "repositoryURL": "https://github.com/marcprux/MemoZ",
+        "state": {
+          "branch": "master",
+          "revision": "4506526a62c6b9c2d3b3811e850b549b65ac75af",
+          "version": null
+        }
+      },
+      {
+        "package": "MiscKit",
+        "repositoryURL": "https://github.com/glimpseio/MiscKit",
+        "state": {
+          "branch": "main",
+          "revision": "db9db351319b7b606f558c9286665a8c13d17002",
+          "version": null
+        }
+      },
+      {
+        "package": "Sparkle",
+        "repositoryURL": "https://github.com/sparkle-project/Sparkle",
+        "state": {
+          "branch": null,
+          "revision": "07b044dd8f304b3d05a6242a3f4c55ffb08d3f61",
+          "version": "1.25.0-rc2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
