@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import MiscKit
 import MemoZ
 
 struct ContentView: View {
@@ -42,7 +41,7 @@ struct MagnificationGestureView<Content: View>: View {
                 self.magnifyState = nil
             }
             .updating($magnifyBy) { currentState, gestureState, transaction in
-                dbg(currentState, gestureState, transaction)
+                //print("magnify", currentState, gestureState, transaction)
             }
             .onEnded({ (value) in
                 self.magnifyState = value

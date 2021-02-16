@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MiscKit
 import Combine
 import SwiftUI
 import Sparkle
@@ -63,7 +62,6 @@ public extension HubOMatic {
     }
 
     @discardableResult static func create(_ config: Config) -> Self {
-        dbg("HubOMatic starting with config:", config)
         let hom = Self(config: config)
         hom.setup()
         return hom
@@ -71,12 +69,11 @@ public extension HubOMatic {
 
     /// Initiates an update check
     func checkForUpdateAction() {
-        dbg()
         updater?.checkForUpdates(nil)
     }
 
     func toolbarButton() -> some View {
-        Button(loc("Check for Update"), action: checkForUpdateAction)
+        Button(LocalizedStringKey("Check for Update"), action: checkForUpdateAction)
     }
 }
 
@@ -87,7 +84,7 @@ public struct HubOMaticUpdateCommands : Commands {
     public var body: some Commands {
         Group {
             CommandGroup(after: CommandGroupPlacement.appSettings) {
-                Button(loc("Check for Updates"), action: hub.checkForUpdateAction)
+                Button(LocalizedStringKey("Check for Updates"), action: hub.checkForUpdateAction)
             }
         }
     }
