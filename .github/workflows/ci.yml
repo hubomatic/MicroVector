@@ -52,14 +52,14 @@ jobs:
 
       - name: "Bild Archive"
         run:
-          xcodebuild archive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
+          xcodebuild archive -scheme "${{ env.APP_NAME }}" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
           
       - name: "Export Archive"
         run:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
       # https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution/resolving_common_notarization_issues
-      - name: "Mandatory Apple Notarization"
+      - name: "Notarize App"
         uses: hubomatic/hubomat@v0.0.10
         with:
           verbose: false
