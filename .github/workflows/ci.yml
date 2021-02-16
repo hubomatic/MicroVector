@@ -108,7 +108,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: RELEASE_NOTES.md
           files: |
             appcast.xml
             CHANGELOG.md
