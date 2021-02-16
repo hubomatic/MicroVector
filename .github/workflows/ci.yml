@@ -35,7 +35,7 @@ jobs:
         
       - name: Set steps.revinfo.outputs.buildnumber to current rev-list count
         id: revinfo
-        run: echo "::set-output name=buildnumber::$(git rev-list --count HEAD)"
+        run: echo "::set-output name=buildnumber::$(git rev-list --count ${{ steps.taginfo.outputs.tagname }})"
         
       - name: Test appcast.xml
         run: |
