@@ -49,8 +49,7 @@ public final class HubOMatic : ObservableObject {
     }
 
     func setup() {
-        //UserDefaults.standard.set(config.versionInfo.absoluteString, forKey: "SUFeedURL")
-        UserDefaults.standard.set("https://www.glimpse.io/appcast.xml", forKey: "SUFeedURL")
+        UserDefaults.standard.set(config.versionInfo.absoluteString, forKey: "SUFeedURL")
     }
 }
 
