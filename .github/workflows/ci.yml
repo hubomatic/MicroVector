@@ -88,7 +88,7 @@ jobs:
           product-path: "Export/${{env.APP_NAME }}.app"
 
       - name: Package for Distribution
-        run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "${{ env.APP_NAME }}.zip"
+        run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "Export/${{ env.APP_NAME }}.zip"
 
       - name: Upload Build Artifact Zip
         uses: actions/upload-artifact@v2
