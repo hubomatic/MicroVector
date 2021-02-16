@@ -33,6 +33,11 @@ jobs:
       - name: Set steps.vars.outputs.tag to current release
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        
+      - name: Test appcast.xml
+        run: |
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ env.GITHUB_RUN_ID }}" sparkle:shortVersionString="${{ steps.vars.outputs.tag }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > test-appcast.xml
+          cat test-appcast.xml
 
       #- name: "Archive"
       #  uses: devbotsxyz/xcode-archive@v1
