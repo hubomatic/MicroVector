@@ -16,7 +16,7 @@ jobs:
       ORG_NAME: hubomatic
     runs-on: macos-latest
     environment: Signing
-    timeout-minutes: 120
+    timeout-minutes: 15 # small projects should be quick
     steps:
       - name: "Checkout Project"
         uses: actions/checkout@v2
@@ -70,8 +70,8 @@ jobs:
       - name: "Export Archive"
         run:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
+        no_output_timeout: 5m
 
-      # https://developer.apple.com/documentation/xcode/notarizing_macos_software_before_distribution/resolving_common_notarization_issues
       - name: "Notarize App"
         uses: hubomatic/hubomat@0.0.16
         with:
@@ -86,19 +86,12 @@ jobs:
           appstore-connect-username: ${{ secrets.NOTARIZATION_USERNAME }}
           appstore-connect-password: ${{ secrets.NOTARIZATION_PASSWORD }}
 
-      #- name: "Notarize Release Build"
-      #  uses: devbotsxyz/xcode-notarize@v1
-      #  with:
-      #    verbose: true
-      #    product-path: "Export/${{ env.APP_NAME }}.app"
-      #    appstore-connect-username: ${{ secrets.NOTARIZATION_USERNAME }}
-      #    appstore-connect-password: ${{ secrets.NOTARIZATION_PASSWORD }}
 
       - name: "Staple Release Build"
         uses: devbotsxyz/xcode-staple@v1
         with:
           verbose: true
-          product-path: "Export/${{env.APP_NAME }}.app"
+          product-path: "Export/${{ env.APP_NAME }}.app"
 
       - name: Package for Distribution
         run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "Export/${{ env.APP_NAME }}.zip"
