@@ -47,7 +47,7 @@ jobs:
         
       - name: Test appcast.xml
         run: |
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > test-appcast.xml
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > test-appcast.xml
           cat test-appcast.xml
 
       #- name: "Archive"
@@ -116,7 +116,7 @@ jobs:
       - name: Generate appcast.xml
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.vars.outputs.tag }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
           cat Export/appcast.xml
           
       - name: Release
