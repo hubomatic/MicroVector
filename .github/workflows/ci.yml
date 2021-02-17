@@ -21,7 +21,7 @@ jobs:
       - name: "Checkout Project"
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # needed for git rev-list count to be correct
+          fetch-depth: 0 # https://github.com/actions/checkout/issues/100
           submodules: true
 
       # cannot test until macos-11.0 is available in GitHub Actions
