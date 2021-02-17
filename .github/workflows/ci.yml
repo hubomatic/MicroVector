@@ -29,6 +29,13 @@ jobs:
       #- name: App Tests
       #  run: xcodebuild test -scheme ${{ env.APP_NAME }}
         
+      - name: Print commits with git rev-list --count HEAD
+        run: echo $(git rev-list --count HEAD)
+      - name: Print commits with git log --pretty=format:'' | wc -l 
+        run: git log --pretty=format:'' | wc -l
+      - name: print git rev-list HEAD --count --first-parent
+        run: echo $(git rev-list HEAD --count --first-parent)
+      
       - name: Set steps.taginfo.outputs.tagname to current release
         id: taginfo
         run: echo ::set-output name=tagname::${GITHUB_REF#refs/*/}
