@@ -70,7 +70,6 @@ jobs:
       - name: "Export Archive"
         run:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
-        no_output_timeout: 5m
 
       - name: "Notarize App"
         uses: hubomatic/hubomat@0.0.16
