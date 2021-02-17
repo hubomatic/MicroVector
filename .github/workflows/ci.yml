@@ -29,7 +29,13 @@ jobs:
       #  run: xcodebuild test -scheme ${{ env.TEST_NAME }}
       #- name: App Tests
       #  run: xcodebuild test -scheme ${{ env.APP_NAME }}
-          
+
+      # Ensure Info.plist has:
+      # <key>CFBundleShortVersionString</key>
+      # <string>$(MARKETING_VERSION)</string>
+      # <key>CFBundleVersion</key>
+      # <string>$(PRODUCT_VERSION)</string>
+
       - name: Set steps.taginfo.outputs.tagname to current release
         id: taginfo
         run: echo ::set-output name=tagname::${GITHUB_REF#refs/*/}
@@ -62,7 +68,7 @@ jobs:
 
       - name: "Build Archive"
         run:
-          xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}"
+          xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}" PRODUCT_VERSION="${{ steps.revinfo.outputs.buildnumber }}"
           
       - name: "Export Archive"
         run:
