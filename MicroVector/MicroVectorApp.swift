@@ -20,9 +20,5 @@ struct MicroVectorApp: App {
                 }
         }
         .withHubOMatic(hub)
-
-//        Settings {
-//            hub.settingsView(autoupdate: $autoupdate)
-//        }
     }
 }
