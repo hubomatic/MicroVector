@@ -1,3 +1,4 @@
+# Simply bumps the semver periodically for testing, which triggers a build & release
 name: Bump Version
 on:
   push:
