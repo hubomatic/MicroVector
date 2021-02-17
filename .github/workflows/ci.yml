@@ -44,16 +44,6 @@ jobs:
         id: revinfo
         run: echo "::set-output name=buildnumber::$(git rev-list --count ${{ steps.taginfo.outputs.tagname }})"
         
-      - name: Test appcast.xml
-        run: |
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > test-appcast.xml
-          cat test-appcast.xml
-
-      #- name: "Archive"
-      #  uses: devbotsxyz/xcode-archive@v1
-      #  with:
-      #    scheme: ${{ env.APP_NAME }}
-        
       - name: "Import Certificate: Distribution"
         uses: devbotsxyz/import-signing-certificate@main
         with:
@@ -65,6 +55,8 @@ jobs:
         run: |
           mkdir -p Export/
           echo '<plist version="1.0"><dict><key>method</key><string>developer-id</string><key>teamID</key><string>${{ secrets.TEAM_ID }}</string></dict></plist>' > "Export/${{ env.APP_NAME }}ExportOptions.plist"
+          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
+          cat Export/appcast.xml
 
       - name: "Build Archive"
         run:
@@ -112,11 +104,6 @@ jobs:
           name: Build
           path: Export/${{ env.APP_NAME }}.zip
 
-      - name: Generate appcast.xml
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.APP_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
-          cat Export/appcast.xml
           
       - name: Release
         uses: softprops/action-gh-release@v1
