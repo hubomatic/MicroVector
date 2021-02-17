@@ -68,7 +68,7 @@ jobs:
 
       - name: "Build Archive"
         run:
-          xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.vars.outputs.tag }}" PRODUCT_VERSION="${{ steps.revinfo.outputs.buildnumber }}"
+          xcodebuild archive -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.taginfo.outputs.tagname }}" PRODUCT_VERSION="${{ steps.revinfo.outputs.buildnumber }}"
           
       - name: "Export Archive"
         run:
