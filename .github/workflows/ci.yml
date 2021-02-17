@@ -43,13 +43,18 @@ jobs:
       - name: Set steps.revinfo.outputs.buildnumber to current rev-list count
         id: revinfo
         run: echo "::set-output name=buildnumber::$(git rev-list --count ${{ steps.taginfo.outputs.tagname }})"
-        
+
       - name: "Import Certificate: Distribution"
         uses: devbotsxyz/import-signing-certificate@main
         with:
           certificate-data: ${{ secrets.DISTRIBUTION_CERTIFICATE_DATA }}
           certificate-passphrase: ${{ secrets.DISTRIBUTION_CERTIFICATE_PASSPHRASE }}
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
+
+        # uses: apple-actions/import-codesign-certs@v1
+        # with: 
+        #   p12-file-base64: ${{ secrets.DISTRIBUTION_CERTIFICATE_DATA }}
+        #   p12-password: ${{ secrets.DISTRIBUTION_CERTIFICATE_PASSPHRASE }}
 
       - name: "Configure Export"
         run: |
