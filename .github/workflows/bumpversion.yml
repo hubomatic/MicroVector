@@ -5,7 +5,7 @@ on:
       - main
       - master
   schedule:
-    - cron:  '25 * * * *'
+    - cron:  '*/15 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
