@@ -70,7 +70,6 @@ jobs:
       - name: "Print Archive Size"
         run:
           du -skh "Export/${{ env.APP_NAME }}.xcarchive" 
-
           
       - name: "Export Archive"
         run:
