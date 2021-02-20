@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		490B596D25D99AA100E6F90D /* MemoZ in Frameworks */ = {isa = PBXBuildFile; productRef = 490B596C25D99AA100E6F90D /* MemoZ */; };
-		490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; };
-		490B597B25D99B0A00E6F90D /* HubOMatic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		493B7CE825E196A6004BC60C /* Hub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B7CE725E196A6004BC60C /* Hub.swift */; };
 		495DE45E25D77C0B005CA904 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE45D25D77C0A005CA904 /* README.md */; };
+		49998E5225E1B8D700BD72A8 /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 49998E5125E1B8D700BD72A8 /* HubOMatic */; };
 		49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */; };
 		49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214EF25D6CB800030F8B2 /* MicroVectorDocument.swift */; };
 		49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214F125D6CB800030F8B2 /* ContentView.swift */; };
@@ -46,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				490B597B25D99B0A00E6F90D /* HubOMatic in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		493B7CE725E196A6004BC60C /* Hub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub.swift; sourceTree = "<group>"; };
 		495DE45D25D77C0A005CA904 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		49C214EA25D6CB800030F8B2 /* MicroVector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroVector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorApp.swift; sourceTree = "<group>"; };
@@ -79,7 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490B596D25D99AA100E6F90D /* MemoZ in Frameworks */,
-				490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */,
+				49998E5225E1B8D700BD72A8 /* HubOMatic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +136,6 @@
 				49C214F825D6CB830030F8B2 /* Info.plist */,
 				49C214F925D6CB830030F8B2 /* MicroVector.entitlements */,
 				49C214F525D6CB830030F8B2 /* Preview Content */,
-				493B7CE725E196A6004BC60C /* Hub.swift */,
 			);
 			path = MicroVector;
 			sourceTree = "<group>";
@@ -190,7 +185,7 @@
 			name = MicroVector;
 			packageProductDependencies = (
 				490B596C25D99AA100E6F90D /* MemoZ */,
-				490B597925D99B0A00E6F90D /* HubOMatic */,
+				49998E5125E1B8D700BD72A8 /* HubOMatic */,
 			);
 			productName = MicroVector;
 			productReference = 49C214EA25D6CB800030F8B2 /* MicroVector.app */;
@@ -264,8 +259,8 @@
 			);
 			mainGroup = 49C214E125D6CB800030F8B2;
 			packageReferences = (
-				49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */,
 				49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */,
+				49998E5025E1B8D700BD72A8 /* XCRemoteSwiftPackageReference "HubOMatic" */,
 			);
 			productRefGroup = 49C214EB25D6CB800030F8B2 /* Products */;
 			projectDirPath = "";
@@ -310,7 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				493B7CE825E196A6004BC60C /* Hub.swift in Sources */,
 				49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */,
 				49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */,
 				49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */,
@@ -639,9 +633,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */ = {
+		49998E5025E1B8D700BD72A8 /* XCRemoteSwiftPackageReference "HubOMatic" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hubomatic/HubOMatic";
+			repositoryURL = "https://github.com/hubomatic/HubOMatic.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -663,9 +657,9 @@
 			package = 49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */;
 			productName = MemoZ;
 		};
-		490B597925D99B0A00E6F90D /* HubOMatic */ = {
+		49998E5125E1B8D700BD72A8 /* HubOMatic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */;
+			package = 49998E5025E1B8D700BD72A8 /* XCRemoteSwiftPackageReference "HubOMatic" */;
 			productName = HubOMatic;
 		};
 /* End XCSwiftPackageProductDependency section */

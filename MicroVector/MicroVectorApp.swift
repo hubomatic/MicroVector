@@ -10,7 +10,7 @@ import HubOMatic
 
 @main
 struct MicroVectorApp: App {
-    @StateObject var hub = HubOMatic.create(.github(org: "hubomatic", repo: "MicroVector"))
+    @StateObject var hub = HubOMatic.create(.github())
 
     @SceneBuilder var body: some Scene {
         DocumentGroup(newDocument: MicroVectorDocument()) { file in

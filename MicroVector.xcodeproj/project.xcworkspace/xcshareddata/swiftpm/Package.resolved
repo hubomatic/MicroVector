@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "HubOMatic",
-        "repositoryURL": "https://github.com/hubomatic/HubOMatic",
+        "repositoryURL": "https://github.com/hubomatic/HubOMatic.git",
         "state": {
           "branch": "main",
-          "revision": "7d5fd9dfe6afdb7cb658e2eee16fa99d9e4b5864",
+          "revision": "69b1302f4a7dad293770a5670ce74fc703f01f1e",
           "version": null
         }
       },
@@ -32,9 +32,9 @@
         "package": "Sparkle",
         "repositoryURL": "https://github.com/sparkle-project/Sparkle",
         "state": {
-          "branch": "1.25.0-rc2",
+          "branch": null,
           "revision": "07b044dd8f304b3d05a6242a3f4c55ffb08d3f61",
-          "version": null
+          "version": "1.25.0-rc2"
         }
       }
     ]
