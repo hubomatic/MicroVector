@@ -10,13 +10,13 @@ import HubOMatic
 
 @main
 struct MicroVectorApp: App {
-    @StateObject var hub = HubOMatic.create(.github())
+    @StateObject var hub = HubOMatic.create(.github()).start()
 
     @SceneBuilder var body: some Scene {
         DocumentGroup(newDocument: MicroVectorDocument()) { file in
             ContentView(document: file.$document)
                 .toolbar {
-                    hub.toolbarButton()
+                    hub.checkForUpdateButton()
                 }
         }
         .withHubOMatic(hub)

@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/hubomatic/HubOMatic.git",
         "state": {
           "branch": "main",
-          "revision": "69b1302f4a7dad293770a5670ce74fc703f01f1e",
+          "revision": "d49e61cf9d2ecbc5a603936beeaa499e4014c8c5",
           "version": null
         }
       },
@@ -16,15 +16,6 @@
         "state": {
           "branch": "master",
           "revision": "3aef5d09738b2acb2b9ca1d059f9f3bba59fcbce",
-          "version": null
-        }
-      },
-      {
-        "package": "MiscKit",
-        "repositoryURL": "https://github.com/glimpseio/MiscKit",
-        "state": {
-          "branch": "main",
-          "revision": "db9db351319b7b606f558c9286665a8c13d17002",
           "version": null
         }
       },
