@@ -10,8 +10,8 @@
 		490B596D25D99AA100E6F90D /* MemoZ in Frameworks */ = {isa = PBXBuildFile; productRef = 490B596C25D99AA100E6F90D /* MemoZ */; };
 		490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; };
 		490B597B25D99B0A00E6F90D /* HubOMatic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 490B597925D99B0A00E6F90D /* HubOMatic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		493B7CE825E196A6004BC60C /* Hub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B7CE725E196A6004BC60C /* Hub.swift */; };
 		495DE45E25D77C0B005CA904 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 495DE45D25D77C0A005CA904 /* README.md */; };
-		498872E425DC1F0E00430ABD /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 498872E325DC1F0E00430ABD /* Sparkle */; };
 		49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */; };
 		49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214EF25D6CB800030F8B2 /* MicroVectorDocument.swift */; };
 		49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C214F125D6CB800030F8B2 /* ContentView.swift */; };
@@ -20,7 +20,6 @@
 		49C2150325D6CB830030F8B2 /* MicroVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2150225D6CB830030F8B2 /* MicroVectorTests.swift */; };
 		49C2150E25D6CB830030F8B2 /* MicroVectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C2150D25D6CB830030F8B2 /* MicroVectorUITests.swift */; };
 		49D2614C25D6F5550053615A /* NSImage+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2614B25D6F5550053615A /* NSImage+SVG.swift */; };
-		49D2618425D70FB00053615A /* HubOMatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2618325D70FB00053615A /* HubOMatic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		493B7CE725E196A6004BC60C /* Hub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub.swift; sourceTree = "<group>"; };
 		495DE45D25D77C0A005CA904 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		49C214EA25D6CB800030F8B2 /* MicroVector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroVector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49C214ED25D6CB800030F8B2 /* MicroVectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorApp.swift; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 		49C2150D25D6CB830030F8B2 /* MicroVectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroVectorUITests.swift; sourceTree = "<group>"; };
 		49C2150F25D6CB830030F8B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D2614B25D6F5550053615A /* NSImage+SVG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+SVG.swift"; sourceTree = "<group>"; };
-		49D2618325D70FB00053615A /* HubOMatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubOMatic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				498872E425DC1F0E00430ABD /* Sparkle in Frameworks */,
 				490B596D25D99AA100E6F90D /* MemoZ in Frameworks */,
 				490B597A25D99B0A00E6F90D /* HubOMatic in Frameworks */,
 			);
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				495DE45D25D77C0A005CA904 /* README.md */,
-				49D2618325D70FB00053615A /* HubOMatic.swift */,
 				49C214EC25D6CB800030F8B2 /* MicroVector */,
 				49C2150125D6CB830030F8B2 /* MicroVectorTests */,
 				49C2150C25D6CB830030F8B2 /* MicroVectorUITests */,
@@ -143,6 +140,7 @@
 				49C214F825D6CB830030F8B2 /* Info.plist */,
 				49C214F925D6CB830030F8B2 /* MicroVector.entitlements */,
 				49C214F525D6CB830030F8B2 /* Preview Content */,
+				493B7CE725E196A6004BC60C /* Hub.swift */,
 			);
 			path = MicroVector;
 			sourceTree = "<group>";
@@ -193,7 +191,6 @@
 			packageProductDependencies = (
 				490B596C25D99AA100E6F90D /* MemoZ */,
 				490B597925D99B0A00E6F90D /* HubOMatic */,
-				498872E325DC1F0E00430ABD /* Sparkle */,
 			);
 			productName = MicroVector;
 			productReference = 49C214EA25D6CB800030F8B2 /* MicroVector.app */;
@@ -269,7 +266,6 @@
 			packageReferences = (
 				49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */,
 				49D2615625D6F97D0053615A /* XCRemoteSwiftPackageReference "MemoZ" */,
-				498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 49C214EB25D6CB800030F8B2 /* Products */;
 			projectDirPath = "";
@@ -314,11 +310,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493B7CE825E196A6004BC60C /* Hub.swift in Sources */,
 				49C214F025D6CB800030F8B2 /* MicroVectorDocument.swift in Sources */,
 				49C214EE25D6CB800030F8B2 /* MicroVectorApp.swift in Sources */,
 				49C214F225D6CB800030F8B2 /* ContentView.swift in Sources */,
 				49D2614C25D6F5550053615A /* NSImage+SVG.swift in Sources */,
-				49D2618425D70FB00053615A /* HubOMatic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,14 +639,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				kind = exactVersion;
-				version = "1.25.0-rc2";
-			};
-		};
 		49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hubomatic/HubOMatic";
@@ -679,11 +667,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 49D2614525D6F4EE0053615A /* XCRemoteSwiftPackageReference "HubOMatic" */;
 			productName = HubOMatic;
-		};
-		498872E325DC1F0E00430ABD /* Sparkle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 498872E225DC1F0E00430ABD /* XCRemoteSwiftPackageReference "Sparkle" */;
-			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

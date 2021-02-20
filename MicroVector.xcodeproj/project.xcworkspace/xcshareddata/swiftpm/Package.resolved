@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/hubomatic/HubOMatic",
         "state": {
           "branch": "main",
-          "revision": "35b18d3bcf8168094c7b114bf3419863e9a0a149",
+          "revision": "7d5fd9dfe6afdb7cb658e2eee16fa99d9e4b5864",
           "version": null
         }
       },
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/marcprux/MemoZ",
         "state": {
           "branch": "master",
-          "revision": "4506526a62c6b9c2d3b3811e850b549b65ac75af",
+          "revision": "3aef5d09738b2acb2b9ca1d059f9f3bba59fcbce",
           "version": null
         }
       },
@@ -32,9 +32,9 @@
         "package": "Sparkle",
         "repositoryURL": "https://github.com/sparkle-project/Sparkle",
         "state": {
-          "branch": null,
+          "branch": "1.25.0-rc2",
           "revision": "07b044dd8f304b3d05a6242a3f4c55ffb08d3f61",
-          "version": "1.25.0-rc2"
+          "version": null
         }
       }
     ]
