@@ -9,6 +9,7 @@ on:
     #- cron:  '*/15 * * * *'
 jobs:
   build:
+    if: false # disabled for now
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
