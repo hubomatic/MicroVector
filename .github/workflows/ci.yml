@@ -1,4 +1,4 @@
-name: CI
+name: ci: test and notarize MicroVector
 
 on:
   push:
@@ -20,7 +20,13 @@ jobs:
     runs-on: macos-latest
     environment: Signing
     timeout-minutes: 15 # small projects should be quick
+
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.8.0
+        with:
+          access_token: ${{ github.token }}
+
       - name: "Checkout Project"
         uses: actions/checkout@v2
         with:
