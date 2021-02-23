@@ -85,6 +85,7 @@ jobs:
           verbose: true
           staple: true
           timeout: 120 # minutes
+          archive-path: "Export/${{ env.APP_NAME }}.xcarchive"
           product-path: "Export/${{ env.APP_NAME }}.app"
           artifact-path: "Export/${{ env.APP_NAME }}.zip"
           team-id: ${{ secrets.TEAM_ID }}
