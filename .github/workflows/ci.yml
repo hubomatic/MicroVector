@@ -45,11 +45,13 @@ jobs:
       # <key>CFBundleVersion</key>
       # <string>$(PRODUCT_VERSION)</string>
 
-      - name: "Set steps.taginfo.outputs.tagname to current release"
+      # Set steps.taginfo.outputs.tagname to current release
+      - name: "Set release from tag"
         id: taginfo
         run: echo ::set-output name=tagname::${GITHUB_REF#refs/*/}
         
-      - name: "Set steps.revinfo.outputs.buildnumber to current rev-list count"
+      # Set steps.revinfo.outputs.buildnumber to current rev-list count
+      - name: "Set build number from rev-list"
         id: revinfo
         run: echo "::set-output name=buildnumber::$(git rev-list --count ${{ steps.taginfo.outputs.tagname }})"
 
@@ -58,14 +60,14 @@ jobs:
           mkdir -p Export/
           #echo '<plist version="1.0"><dict><key>method</key><string>developer-id</string><key>teamID</key><string>${{ secrets.TEAM_ID }}</string></dict></plist>' > "Export/${{ env.APP_NAME }}ExportOptions.plist"
           echo '<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"><channel><item><enclosure sparkle:version="${{ steps.revinfo.outputs.buildnumber }}" sparkle:shortVersionString="${{ steps.taginfo.outputs.tagname }}" url="https://github.com/${{ env.ORG_NAME }}/${{ env.REPO_NAME }}/releases/download/${{ steps.taginfo.outputs.tagname }}/${{ env.APP_NAME }}.zip"></enclosure></item></channel></rss>' > Export/appcast.xml
-          cat Export/appcast.xml
+          xmllint --format Export/appcast.xml # ensure appcast is valid
 
       - name: "Build Archive"
         run:
           xcodebuild archive -configuration "${{ env.CONFIGURATION }}" -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.taginfo.outputs.tagname }}" PRODUCT_VERSION="${{ steps.revinfo.outputs.buildnumber }}" CURRENT_PROJECT_VERSION="${{ steps.revinfo.outputs.buildnumber }}"
 
       - name: "HubOMat"
-        uses: hubomatic/hubomat@0.0.38
+        uses: hubomatic/hubomat@0.0.39
         with:
           verbose: true
           staple: true
