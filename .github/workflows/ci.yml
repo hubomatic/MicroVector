@@ -80,13 +80,13 @@ jobs:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
       - name: "Notarize App"
-        uses: hubomatic/hubomat@0.0.19
+        uses: hubomatic/hubomat@0.0.20
         with:
-          verbose: false
-          staple: false
+          verbose: true
+          staple: true
           timeout: 120 # minutes
           product-path: "Export/${{ env.APP_NAME }}.app"
-          #artifact-path: "Export/${{ env.APP_NAME }}.zip"
+          artifact-path: "Export/${{ env.APP_NAME }}.zip"
           team-id: ${{ secrets.TEAM_ID }}
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
           certificate-data: ${{ secrets.DISTRIBUTION_CERTIFICATE_DATA }}
