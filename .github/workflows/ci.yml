@@ -72,7 +72,7 @@ jobs:
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
       - name: "HubOMat"
-        uses: hubomatic/hubomat@0.0.32
+        uses: hubomatic/hubomat@0.0.33
         with:
           verbose: true
           staple: true
