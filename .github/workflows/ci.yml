@@ -1,4 +1,4 @@
-name: ci: test and notarize MicroVector
+name: "ci: test and notarize MicroVector"
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
     timeout-minutes: 15 # small projects should be quick
 
     steps:
-      - name: Cancel Previous Runs
+      - name: "Cancel Previous Runs"
         uses: styfle/cancel-workflow-action@0.8.0
         with:
           access_token: ${{ github.token }}
@@ -45,11 +45,11 @@ jobs:
       # <key>CFBundleVersion</key>
       # <string>$(PRODUCT_VERSION)</string>
 
-      - name: Set steps.taginfo.outputs.tagname to current release
+      - name: "Set steps.taginfo.outputs.tagname to current release"
         id: taginfo
         run: echo ::set-output name=tagname::${GITHUB_REF#refs/*/}
         
-      - name: Set steps.revinfo.outputs.buildnumber to current rev-list count
+      - name: "Set steps.revinfo.outputs.buildnumber to current rev-list count"
         id: revinfo
         run: echo "::set-output name=buildnumber::$(git rev-list --count ${{ steps.taginfo.outputs.tagname }})"
 
@@ -80,9 +80,10 @@ jobs:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
       - name: "Notarize App"
-        uses: hubomatic/hubomat@0.0.16
+        uses: hubomatic/hubomat@0.0.17
         with:
           verbose: false
+          staple: true
           timeout: 120 # minutes
           product-path: "Export/${{ env.APP_NAME }}.app"
           artifact-path: "Export/${{ env.APP_NAME }}.zip"
@@ -94,23 +95,23 @@ jobs:
           appstore-connect-password: ${{ secrets.NOTARIZATION_PASSWORD }}
 
 
-      - name: "Staple Release Build"
-        uses: devbotsxyz/xcode-staple@v1
-        with:
-          verbose: true
-          product-path: "Export/${{ env.APP_NAME }}.app"
+          #- name: "Staple Release Build"
+          #uses: devbotsxyz/xcode-staple@v1
+          #with:
+          #verbose: true
+          #product-path: "Export/${{ env.APP_NAME }}.app"
 
       - name: Package for Distribution
         run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "Export/${{ env.APP_NAME }}.zip"
 
-      - name: Upload Build Artifact Zip
+      - name: "Upload Build Artifact Zip"
         uses: actions/upload-artifact@v2
         with:
           name: Build
           path: Export/${{ env.APP_NAME }}.zip
 
           
-      - name: Release
+      - name: "Create Release for tag"
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
