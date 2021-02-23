@@ -64,15 +64,8 @@ jobs:
         run:
           xcodebuild archive -configuration "${{ env.CONFIGURATION }}" -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" COMPILER_INDEX_STORE_ENABLE="NO" MARKETING_VERSION="${{ steps.taginfo.outputs.tagname }}" PRODUCT_VERSION="${{ steps.revinfo.outputs.buildnumber }}" CURRENT_PROJECT_VERSION="${{ steps.revinfo.outputs.buildnumber }}"
 
-      - name: "Import Certificate: Distribution"
-        uses: devbotsxyz/import-signing-certificate@main
-        with:
-          certificate-data: ${{ secrets.DISTRIBUTION_CERTIFICATE_DATA }}
-          certificate-passphrase: ${{ secrets.DISTRIBUTION_CERTIFICATE_PASSPHRASE }}
-          keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
-
       - name: "HubOMat"
-        uses: hubomatic/hubomat@0.0.34
+        uses: hubomatic/hubomat@0.0.35
         with:
           verbose: true
           staple: true
