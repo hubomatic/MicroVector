@@ -1,4 +1,4 @@
-name: "ci: test and notarize MicroVector"
+name: "MicroVector CI"
 
 on:
   push:
