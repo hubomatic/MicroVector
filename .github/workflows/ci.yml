@@ -80,7 +80,7 @@ jobs:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
       - name: "Notarize App"
-        uses: hubomatic/hubomat@0.0.17
+        uses: hubomatic/hubomat@0.0.19
         with:
           verbose: false
           staple: true
@@ -101,8 +101,8 @@ jobs:
           #verbose: true
           #product-path: "Export/${{ env.APP_NAME }}.app"
 
-      - name: Package for Distribution
-        run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "Export/${{ env.APP_NAME }}.zip"
+          #- name: Package for Distribution
+          #run: ditto -c -k --keepParent "Export/${{ env.APP_NAME }}.app" "Export/${{ env.APP_NAME }}.zip"
 
       - name: "Upload Build Artifact Zip"
         uses: actions/upload-artifact@v2
@@ -121,6 +121,4 @@ jobs:
             Export/${{ env.APP_NAME }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
 
