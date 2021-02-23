@@ -75,12 +75,12 @@ jobs:
           certificate-passphrase: ${{ secrets.DISTRIBUTION_CERTIFICATE_PASSPHRASE }}
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
-      - name: "Export Archive"
-        run:
-          xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
+      #- name: "Export Archive"
+      #  run:
+      #  xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
-      - name: "Notarize App"
-        uses: hubomatic/hubomat@0.0.26
+      - name: "HubOMat"
+        uses: hubomatic/hubomat@0.0.27
         with:
           verbose: true
           staple: true
