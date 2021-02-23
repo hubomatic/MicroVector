@@ -80,7 +80,7 @@ jobs:
           xcodebuild -exportArchive -archivePath "Export/${{ env.APP_NAME }}.xcarchive" -exportPath Export/ -exportOptionsPlist "Export/${{ env.APP_NAME }}ExportOptions.plist" 
 
       - name: "Notarize App"
-        uses: hubomatic/hubomat@0.0.20
+        uses: hubomatic/hubomat@0.0.21
         with:
           verbose: true
           staple: true
@@ -109,7 +109,7 @@ jobs:
         with:
           name: Build
           path: Export/${{ env.APP_NAME }}.zip
-
+          if-no-files-found: error
           
       - name: "Create Release for tag"
         uses: softprops/action-gh-release@v1
