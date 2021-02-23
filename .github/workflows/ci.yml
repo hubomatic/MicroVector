@@ -83,10 +83,10 @@ jobs:
         uses: hubomatic/hubomat@0.0.19
         with:
           verbose: false
-          staple: true
+          staple: false
           timeout: 120 # minutes
           product-path: "Export/${{ env.APP_NAME }}.app"
-          artifact-path: "Export/${{ env.APP_NAME }}.zip"
+          #artifact-path: "Export/${{ env.APP_NAME }}.zip"
           team-id: ${{ secrets.TEAM_ID }}
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
           certificate-data: ${{ secrets.DISTRIBUTION_CERTIFICATE_DATA }}
