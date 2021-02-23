@@ -72,13 +72,13 @@ jobs:
           keychain-password: ${{ secrets.KEYCHAIN_PASSWORD }}
 
       - name: "HubOMat"
-        uses: hubomatic/hubomat@0.0.33
+        uses: hubomatic/hubomat@0.0.34
         with:
           verbose: true
           staple: true
           timeout: 120 # minutes
           export-method: "developer-id"
-          export-path: "Export/"
+          export-path: "Export/${{ env.APP_NAME }}.xcarchive"
           archive-path: "Export/${{ env.APP_NAME }}.xcarchive"
           product-path: "Export/${{ env.APP_NAME }}.app"
           artifact-path: "Export/${{ env.APP_NAME }}.zip"
