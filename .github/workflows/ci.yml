@@ -53,7 +53,7 @@ jobs:
           echo "::set-output name=buildnumber::$(git rev-list --count ${GITHUB_REF#refs/*/}"
 
       - name: "Demo"
-        id: setup
+        id: demo
         run: echo demo
 
       - name: "Setup Export"
