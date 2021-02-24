@@ -60,7 +60,9 @@ jobs:
           xmllint --format Export/appcast.xml # ensure appcast is valid
 
       - name: "Build Archive"
-        run:
+        run: |
+          echo "MARKETING_VERSION=${{ steps.config.outputs.tagname }}"
+          echo "CURRENT_PROJECT_VERSION=${{ steps.config.outputs.buildnumber }}"
           xcodebuild archive -configuration "${{ env.CONFIGURATION }}" -scheme "${{ env.APP_NAME }}" -archivePath "Export/${{ env.APP_NAME }}.xcarchive" MARKETING_VERSION="${{ steps.config.outputs.tagname }}" CURRENT_PROJECT_VERSION="${{ steps.config.outputs.buildnumber }}"
 
       - name: "Notarize"
