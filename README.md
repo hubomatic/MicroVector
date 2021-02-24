@@ -10,7 +10,3 @@ The app can open `.svg` files and show a live preview of the contents.
 
 ![Screenshot](screenshot.png "Scren shot")
 
-
-
-
-
