@@ -50,7 +50,7 @@ jobs:
         id: config
         run: |
           echo "::set-output name=tagname::${GITHUB_REF#refs/*/}"
-          echo "::set-output name=buildnumber::$(git rev-list --count ${GITHUB_REF#refs/*/}"
+          echo "::set-output name=buildnumber::$(git rev-list --count ${GITHUB_REF#refs/*/})"
 
       - name: "Demo"
         id: demo
