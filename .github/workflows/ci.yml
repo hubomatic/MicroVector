@@ -32,6 +32,14 @@ jobs:
         with:
           fetch-depth: 0 # https://github.com/actions/checkout/issues/100
           submodules: true
+      
+      # not required, but helps speed rebuilding unchanged projects
+      - name: Cache Derived data
+        uses: actions/cache@v2
+        with:
+          path: ~/Library/Developer/Xcode/DerivedData
+          key: ddata-${{ hashFiles('**/*.pbxproj') }}
+          restore-keys: ddata-
 
       # cannot test until macos-11.0 is available in GitHub Actions
       #- name: Framework Tests
