@@ -19,7 +19,7 @@ jobs:
 
     runs-on: macos-latest
     environment: Signing
-    timeout-minutes: 15 # small projects should be quick
+    timeout-minutes: 30 # small projects should be quick
 
     steps:
       - name: "Cancel Previous Runs"
