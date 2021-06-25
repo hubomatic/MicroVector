@@ -17,6 +17,12 @@ struct MicroVectorApp: App {
             ContentView(document: file.$document)
                 .toolbar {
                     hub.checkForUpdateButton()
+
+                    hub.showFeedbackSheetButton(positive: true)
+                    hub.showFeedbackSheetButton(positive: false)
+                }
+                .sheet {
+                    hub.feedbackSheetView()
                 }
         }
         .withHubOMatic(hub)

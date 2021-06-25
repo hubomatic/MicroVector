@@ -1,6 +1,7 @@
 name: "MicroVector CI"
 
 on:
+  workflow_dispatch:
   push:
     branches: '*'
     tags: '*'
